@@ -1,26 +1,140 @@
-
 * {
-   box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 body, section, header, div, p, h1, h2, h3, ul, li {
-   margin: 0;
-   padding: 0;
+    margin: 0;
+    padding: 0;
 }
+
 body {
-   font-family: 'Open Sans', sans-serif;
-   box-sizing: border-box;
-   background-color: #e4e7eb;
-   font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    background-color: #e4e7eb;
+    font-weight: 300;
+    padding: 40px;
 }
+
 header {
-   margin-left: 20px;
+    margin-left: 20px;
 }
+
 h1 { 
-   text-align: center;
-   font-weight: 600;
-   font-size: 42px;
-   padding: 10px 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 42px;
+    padding: 10px 0;
 }
 
-/* add styles here */
+section, #confidence {
+    width: 910px;
+}
 
+.column {
+    display: inline-block;
+    width: 300px;
+    background-color: white;
+}
+
+.column li {
+    list-style-type: none;
+    text-align: center;
+}
+
+.featured, #confidence {
+    background-color: #2F4F4F;
+}
+
+.column li:nth-child(2n) {
+    background-color: rgba(47,59,64,0.35);
+}
+
+.column a {
+    color: #f9f9f9;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 8px 115px;
+    background-color: #3A6BA5;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 1px;
+    box-shadow: 2px 2px 3px 0 gray;
+}
+
+.column a:hover {
+    background-color: #437CBF;
+}
+
+#confidence {
+    color: #f9f9f9;
+    padding: 25px 20px 15px;
+}
+
+section {
+    margin-bottom: 30px;
+    box-shadow: 0 0 6px 0 gray;
+}
+
+h3 {
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.featured h3 {
+    color: #f9f9f9;
+}
+
+.free {
+    background-color: #5BB189;
+}
+
+.standard {
+    background-color: #4B0082;
+    color: #f9f9f9;
+}
+
+.professional {
+    background-color: #EC632A;
+}
+
+.price {
+    text-align: center;
+    font-weight: 800;
+    padding: 16px;
+    font-size: 24px;
+}
+
+.column li {
+    padding: 8px;
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.column div {
+    padding: 35px 10px;
+}
+
+#confidence li {
+    list-style-type: none;
+    line-height: 2.5;
+    font-weight: 350;
+    background-image: url('checkmark.svg');
+    background-size: 24px;
+    background-repeat: no-repeat;
+    padding-left: 34px;
+}
+
+#confidence p {
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+#confidence a {
+    text-decoration: none;
+    font-style: oblique;
+    color: #437CBF;
+    font-weight: 400;
+}
