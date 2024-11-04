@@ -1,28 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8">
-   <title>Chapter 5</title>
-   <link rel="stylesheet" href="reset.css" />
-   
+    <meta charset="utf-8">
+    <title>Chapter 5</title>
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">       
-   <link rel="stylesheet" href="ch05-proj1.css" />
+    <link rel="stylesheet" href="ch05-proj1.css" />
 </head>
-<body>
 
+<body>
     <section>
-         <h3>Data</h3>
-         
-      
-         
+        <h3>Data</h3>
+        <table>
+            <caption>Orders</caption>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Customer</th>
+                    <th>Country</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr>
+                    <td>123</td>
+                    <td>September 12, 2017</td>
+                    <td>Jean Rousseau</td>
+                    <td>France</td>
+                    <td><progress value="100" max="100">100%</progress></td>
+                    <td><span class="status status-shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                    <td>144</td>
+                    <td>September 20, 2017</td>
+                    <td>Georg Hegel</td>
+                    <td>Germany</td>
+                    <td><progress value="100" max="100">100%</progress></td>
+                    <td><span class="status status-shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                    <td>149</td>
+                    <td>October 3, 2017</td>
+                    <td>John Lacke</td>
+                    <td>England</td>
+                    <td><progress value="60" max="100">60%</progress></td>
+                    <td><span class="status status-processing">Processing</span></td>
+                </tr>
+                <tr>
+                    <td>162</td>
+                    <td>October 8, 2017</td>
+                    <td>Thamas Habbes</td>
+                    <td>England</td>
+                    <td><progress value="35" max="100">35%</progress></td>
+                    <td><span class="status status-pending">Pending</span></td>
+                </tr>
+                <tr>
+                    <td>177</td>
+                    <td>October 10, 2017</td>
+                    <td>Johann Fichte</td>
+                    <td>Germany</td>
+                    <td><progress value="35" max="100">35%</progress></td>
+                    <td><span class="status status-pending">Pending</span></td>
+                </tr>
+            </tbody>
+        </table>
     </section>
     
     <section>
-         <h3>Revise</h3>
-         
-        
-    </section>    
-
-
+        <h3>Revise</h3>
+        <form method="get" action="https://www.randyconnolly.com/tests/process.php">
+            <fieldset>
+                <legend>Filter Orders</legend>
+                <p>
+                    <label for="a_customer">Customer</label>
+                    <input type="text" name="client" placeholder="Enter name" id="a_customer">
+                </p>
+                <br />
+                <p>
+                    <label for="a_country">Country</label>
+                    <select name="country" id="a_country">
+                        <option>Choose a country</option>
+                        <option>England</option>
+                        <option>Germany</option>
+                        <option>France</option>
+                    </select>
+                </p>
+                <br />
+                <p>
+                    <label for="a_status">Status</label>
+                    <input type="radio" name="type" value="Pending" id="a_status">Pending
+                    <input type="radio" name="type" value="Processing" id="a_status">Processing
+                    <input type="radio" name="type" value="Shipped" id="a_status">Shipped
+                </p>
+                <br />
+                <p>
+                    <label for="a_order_date">Order Date</label>
+                    <input type="text" name="date" placeholder="mm/dd/yyyy" id="a_order_date">
+                </p>
+                <br />
+                <input type="submit">
+            </fieldset>
+        </form>
+    </section>
 </body>
 </html>

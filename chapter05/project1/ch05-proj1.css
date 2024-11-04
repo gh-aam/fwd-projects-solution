@@ -1,43 +1,86 @@
-/* general text formatting */
-
-
 body {
-   font-family: "Roboto", Verdana, Arial, sans-serif;
-   font-size: 100%;
- background-color: #ECEFF1;    
+    font-family: "Roboto", Verdana, Arial, sans-serif;
+    font-size: 100%;
+    background-color: #ECEFF1;    
 }
 
 section {
-   background-color: white;
-   margin: 1em 4em 1em 4em;
-   border: solid 1pt black;
-
+    background-color: white;
+    margin: 1em 4em 1em 4em;
+    border: solid 1pt black;
 }
+
 section h3 {
-  color: white;
-  padding: 0.75rem;
-  background-color: #263238; 
+    color: white;
+    padding: 0.75rem;
+    background-color: #263238;
 }
 
 .status {
     border-radius: 0.25rem;
     padding: 3px;
     color: white;
-    
 }
+
 .status-processing {
-    background-color:    #E65100;    
+    background-color: #E65100;    
 }
+
 .status-shipped {
-    background-color:   #4CAF50;    
+    background-color: #4CAF50;    
 }
+
 .status-pending {
-    background-color:    #03A9F4;    
+    background-color: #03A9F4;    
 }
 
+caption {
+    background-color: #607D8B;
+    margin: 0.3rem 2rem 0rem 2rem;
+    padding: 0.4rem;
+    color: white;
+    font-weight: bold;
+}
 
+table {
+    padding: 0.1rem 2rem 0.1rem 2rem;
+    text-align: left;
+    width: 100%;
+}
 
-/* table formatting -- you will add these */
+th, td {
+    padding: 1rem;
+}
 
+progress {
+    background-color: #263238;
+}
 
+label {
+    display: block;
+    font-weight: bold;
+}
 
+fieldset {
+    margin: 0.3rem 2rem 0.3rem 2rem;
+}
+
+legend {
+    background-color: #607D8B;
+    padding: 0.4rem;
+    color: white;
+    font-weight: bold;
+    width: 99%;
+    text-align: center;
+}
+
+input[type="submit"] {
+    background-color: #4B0082;
+    color: white;
+    border: 0;
+    padding: 0.5rem 1.3rem;
+}
+
+input[type="radio"] {
+    transform: scale(0.8);
+}
