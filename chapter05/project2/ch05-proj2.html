@@ -1,28 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8">
-   <title>Chapter 5</title>
-   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="variables-palette-7.css" >   
-   <link rel="stylesheet" href="ch05-proj2.css" />
+    <meta charset="utf-8">
+    <title>Chapter 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="variables-palette-7.css">   
+    <link rel="stylesheet" href="ch05-proj2.css">
 </head>
+
 <body>
-<form >
-<fieldset>
-   <legend>Advanced Art Work Search</legend>
-   
-    <div id="searchBox">
-     
-    </div>   
-    <div id="settingsBox">
-
-
-    </div>
-    <div id="paintingBox">
-
-    </div> 
-</fieldset>  
-</form>
+    <form method="get" action="https://www.randyconnolly.com/tests/process.php">
+        <fieldset>
+            <legend>Advanced Art Work Search</legend>
+            <div id="searchBox">
+                <input type="search" name="search" placeholder="Search here">
+                &nbsp;
+                <label for="accessibility_subject">Subject</label>
+                <input type="radio" name="subject" value="1" id="accessibility_subject">History
+                <input type="radio" name="subject" value="2" id="accessibility_subject">Person
+                <input type="radio" name="subject" value="3" id="accessibility_subject">Landscape
+                &nbsp;
+                <select name="filter">
+                    <option value="0">Select Genere</option>
+                    <option value="1">Baroque</option>
+                    <option value="2">Renaissance</option>
+                    <option value="3">Realism</option>
+                </select>
+                &nbsp;
+                <input type="submit" value="Filter">
+            </div>
+            
+            <div id="settingsBox">
+                <select name="action">
+                    <option value="0">Bulk Actions</option>
+                    <option value="1">Archive</option>
+                    <option value="2">Edit</option>
+                    <option value="3">Delete</option>
+                    <option value="4">Collection</option>
+                </select>
+                &nbsp;
+                <input type="submit" value="Apply To All">
+            </div>
+            
+            <div id="paintingBox">
+                <table>
+                    <caption>Paintings</caption>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Title</th>
+                            <th>Artist</th>
+                            <th>Year</th>
+                            <th>Genere</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" name="index[]" value="10"></td>
+                            <td><img src="images/125010.jpg" alt="Alida Cristina" width="100px" height="100px"></td>
+                            <td>Portrait of Alida Cristina Assink</td>
+                            <td>Kuserman Jan</td>
+                            <td>1833</td>
+                            <td>Realism</td>
+                            <td>
+                                <button type="button"><img src="images/edit.png" alt="Edit"></button>
+                                <button type="button"><img src="images/archive.png" alt="Archive"></button>
+                                <button type="button"><img src="images/delete.png" alt="Delete"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="index[]" value="20"></td>
+                            <td><img src="images/125020.jpg" alt="William 2" width="100px" height="100px"></td>
+                            <td>Portrait of William 2, King of the Netherlands</td>
+                            <td>Kuserman Jan</td>
+                            <td>1839</td>
+                            <td>Realism</td>
+                            <td>
+                                <button type="button"><img src="images/edit.png" alt="Edit"></button>
+                                <button type="button"><img src="images/archive.png" alt="Archive"></button>
+                                <button type="button"><img src="images/delete.png" alt="Delete"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="index[]" value="30"></td>
+                            <td><img src="images/130020.jpg" alt="Three girls" width="100px" height="100px"></td>
+                            <td>Three girls from the America</td>
+                            <td>Schwartz Thomas</td>
+                            <td>1885</td>
+                            <td>Realism</td>
+                            <td>
+                                <button type="button"><img src="images/edit.png" alt="Edit"></button>
+                                <button type="button"><img src="images/archive.png" alt="Archive"></button>
+                                <button type="button"><img src="images/delete.png" alt="Delete"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="index[]" value="40"></td>
+                            <td><img src="images/127010.jpg" alt="Windmill" width="100px" height="100px"></td>
+                            <td>The Windmill at Wjk Bij Dwtsreoe</td>
+                            <td>Rjsdae, Jacob Van</td>
+                            <td>1870</td>
+                            <td>Dutch Golden Age</td>
+                            <td>
+                                <button type="button"><img src="images/edit.png" alt="Edit"></button>
+                                <button type="button"><img src="images/archive.png" alt="Archive"></button>
+                                <button type="button"><img src="images/delete.png" alt="Delete"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="index[]" value="50"></td>
+                            <td><img src="images/128010.jpg" alt="Morning Ride" width="100px" height="100px"></td>
+                            <td>Morning Ride along the Beach</td>
+                            <td>Melve, Antor</td>
+                            <td>1871</td>
+                            <td>Realism</td>
+                            <td>
+                                <button type="button"><img src="images/edit.png" alt="Edit"></button>
+                                <button type="button"><img src="images/archive.png" alt="Archive"></button>
+                                <button type="button"><img src="images/delete.png" alt="Delete"></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>  
+    </form>
 </body>
 </html>
