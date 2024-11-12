@@ -1,27 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-<head >
-   <meta charset="utf-8">
-   <title>Chapter 5</title>
-   <link rel="stylesheet" href="reset.css" />
-   <link rel="stylesheet" href="ch05-proj3.css" />
+<head>
+    <meta charset="utf-8">
+    <title>Chapter 5</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="ch05-proj3.css">
 </head>
+
 <body>
-<header>
-     <h1>Share Your Travels</h1>
-     <p>let us know where you've been</p>
-</header>
-<main>
-   <section>
-      <form >
-         <fieldset>
-            <legend>Photo Details</legend>
-
-         </fieldset>
-      </form>       
-   </section>
-</main>  
-
-
+    <header>
+        <h1>Share Your Travels</h1>
+        <p>let us know where you've been</p>
+    </header>
+    
+    <main>
+        <section>
+            <form method="post" action="https://www.randyconnolly.com/tests/process.php">
+                <fieldset>
+                    <legend>Photo Details</legend>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <p>
+                                        <label for="title_accessibility">Title</label><br />
+                                        <input type="text" name="title" placeholder="Enter title here" id="title_accessibility">
+                                    </p>
+                                    <p>
+                                        <label for="description_accessibility">Description</label><br />
+                                        <textarea name="description" rows="3" placeholder="Enter description here" id="description_accessibility"></textarea>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        <label for="continent_accessibility">Continent</label><br />
+                                        <select name="continent" id="continent_accessibility">
+                                            <option>Choose continent</option>
+                                            <option>North America</option>
+                                            <option>Africa</option>
+                                            <option>Asia</option>
+                                            <option>Europe</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <label for="country_accessibility">Country</label><br />
+                                        <select name="country" id="country_accessibility">
+                                            <option>Choose country</option>
+                                            <option>Canada</option>
+                                            <option>America</option>
+                                            <option>England</option>
+                                            <option>Russia</option>
+                                            <option>China</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <label for="city_accessibility">City</label><br />
+                                        <input type="text" name="city" id="city_accessibility">
+                                    </p>
+                                </td>
+                                <td>
+                                    <div>
+                                        <label for="copyright_accessibility">Copyright?</label><br />
+                                        <input type="radio" name="copyright" value="1" id="copyright_accessibility">All rights reserved<br />
+                                        <input type="radio" name="copyright" value="2" id="copyright_accessibility">Create Commons
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="cct_accessibility">Creative Commons Types</label><br />
+                                        <input type="checkbox" name="cc[]" value="1" id="cct_accessibility">Attribution<br />
+                                        <input type="checkbox" name="cc[]" value="2" id="cct_accessibility">Noncommercial<br />
+                                        <input type="checkbox" name="cc[]" value="3" id="cct_accessibility">No Derivative Works
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="bg_color">
+                                    <label for="software_license_accessibility">I accept the software license</label>
+                                    <input type="checkbox" name="accept" id="software_license_accessibility">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        <label for="photo_rating_accessibility">Rate this photo:</label><br />
+                                        <input type="text" name="rate" id="photo_rating_accessibility">
+                                    </p>
+                                    <p>
+                                        <label for="color_collection_accessibility">Color Collection:</label><br />
+                                        <input type="color" name="color" id="color_collection_accessibility">
+                                    </p>
+                                </td>
+                                <td>
+                                    <div>
+                                        <p>
+                                            <label for="date_accessibility">Date Taken:</label><br />
+                                            <input type="date" name="date" id="date_accessibility">
+                                        </p>
+                                        <p>
+                                            <label for="time_accessibility">Time Taken:</label><br />
+                                            <input type="time" name="time" id="time_accessibility">
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="bg_color last_cell">
+                                    <input type="submit"> <input type="reset" value="Clear Form">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </form>       
+        </section>
+    </main>
 </body>
 </html>
