@@ -6,32 +6,35 @@ p, h1, h2, h3, ul, li, body {
     margin: 0;    
 }
 
-
 h1, h2, h3, nav, footer {
- font-family: Lobster, Cambria, "Times New Roman", serif;
- color: #FAFAFA;   
+    font-family: Lobster, Cambria, "Times New Roman", serif;
+    color: #FAFAFA;   
 }
+
 body {
-   font-family: "Open Sans", Verdana, Arial, sans-serif;
-   font-size: 100%;
-
-
+    font-family: "Open Sans", Verdana, Arial, sans-serif;
+    font-size: 100%;
+    background-image: linear-gradient(to top,white,darkblue);
+    background-repeat: no-repeat;
 }
+
 header {
     padding: 15px;
     width: auto; 
     margin: 0 0;
- 
-
     height: 50px;
+    background-image: repeating-linear-gradient(45deg,black 0,black .75em,darkblue 0,darkblue 2em);
+    background-repeat: no-repeat;
 }
-header h2 {    
+
+h2 {    
     float: left;
     font-size: 28pt;  
     margin-left:10px;
 }
-header nav {
-     float: right;  
+
+nav {
+    float: right;  
     margin: 10px 15px 10px 10px;
     top: 5px;
 }
@@ -40,26 +43,22 @@ main {
     margin: 20px 10px;
 }
 
-
 section {
-   margin: 1em auto;
-   clear: left;
-   
-   width: 90%;    
+    margin: 1em auto;
+    clear: left;
+    width: 100%;    
 }
 
-section h1 {
-   margin-left: 1.5em; 
+h1 {
+    margin-left: 1.5em; 
     font-size: 24pt;
 }
 
-
 figure {
     float: left; 
-    width: 490px;
-
+    width: 393px;
 }
+
 figcaption {
-   margin-bottom: 1em;   
+    margin-bottom: 1em;   
 }
-

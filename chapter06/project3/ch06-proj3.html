@@ -1,36 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8">
-   <title>Chapter 6</title>
-   <link rel="stylesheet" href="styles.css" />
+    <meta charset="utf-8">
+    <title>Chapter 6</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <h2>Share Your Travels</h2>
         <nav><img src="menu.png" alt="mobile menu icon"></nav>
-    </header>  
+    </header>
+    
     <main>
-   
-    <section>
-       <h1>HTML5 Video</h1>
-        <figure>
-
-            <figcaption>Source:<br><a href="https://videos.pexels.com/videos/arc-de-triomphe-in-paris-470">https://videos.pexels.com/videos/arc-de-triomphe-in-paris-470</a>            
-            </figcaption>
-        </figure>
-        <figure>
-
-            <figcaption>Source:<br><a href="https://videos.pexels.com/videos/timelapse-video-at-a-lake-435">https://videos.pexels.com/videos/timelapse-video-at-a-lake-435</a>            
-            </figcaption>
-        </figure>
-        <figure>
-
-            <figcaption>Source:<br><a href="https://videos.pexels.com/videos/sunset-at-a-lake-464">https://videos.pexels.com/videos/sunset-at-a-lake-464</a>            
-            </figcaption>
-        </figure>                        
-    </section>
+        <section>
+            <h1>HTML5 Video</h1>
+            <figure>
+                <video id="video" width="393" height="220" controls>
+                    <source src="media/paris.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                    <source src="media/paris.ogv" type='video/ogg; codecs="theora, vorbis"'>
+                    <source src="media/paris.webm" type='video/webm; codecs="vp8, vorbis"'>
+                    
+                    <!-- Use Flash if above video formats not supported -->
+                    <object width="393" height="220" type="application/x-shockwaveflash" data="media/paris.swf">
+                        <param name="movie" value="media/paris.swf">
+                        <param name="flashvars" value="controlbar=over&amp;image=preview.png&amp;file=media/paris.mp4">
+                        <img src="preview.jpg" width="393" height="220" title="video not supported">
+                    </object>
+                </video>
+                <figcaption>Source:<br><a href="https://videos.pexels.com/videos/arc-de-triomphe-in-paris-470">https://videos.pexels.com/videos/arc-de-triomphe-in-paris-470</a></figcaption>
+            </figure>
+            <figure>
+                <video id="video" width="393" height="220" controls>
+                    <source src="media/lake.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                    <source src="media/lake.ogv" type='video/ogg; codecs="theora, vorbis"'>
+                    <source src="media/lake.webm" type='video/webm; codecs="vp8, vorbis"'>
+                    
+                    <!-- Use Flash if above video formats not supported -->
+                    <object width="393" height="220" type="application/x-shockwaveflash" data="media/lake.swf">
+                        <param name="movie" value="media/lake.swf">
+                        <param name="flashvars" value="controlbar=over&amp;image=preview.png&amp;file=media/lake.mp4">
+                        <img src="preview.jpg" width="393" height="220" title="video not supported">
+                    </object>
+                </video>
+                <figcaption>Source:<br><a href="https://videos.pexels.com/videos/timelapse-video-at-a-lake-435">https://videos.pexels.com/videos/timelapse-video-at-a-lake-435</a></figcaption>
+            </figure>
+            <figure>
+                <video id="video" width="393" height="220" controls>
+                    <source src="media/sunset.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                    <source src="media/sunset.ogv" type='video/ogg; codecs="theora, vorbis"'>
+                    <source src="media/sunset.webm" type='video/webm; codecs="vp8, vorbis"'>
+                    
+                    <!-- Use Flash if above video formats not supported -->
+                    <object width="393" height="220" type="application/x-shockwaveflash" data="media/sunset.swf">
+                        <param name="movie" value="media/sunset.swf">
+                        <param name="flashvars" value="controlbar=over&amp;image=preview.png&amp;file=media/sunset.mp4">
+                        <img src="preview.jpg" width="393" height="220" title="video not supported">
+                    </object>
+                </video>
+                <figcaption>Source:<br><a href="https://videos.pexels.com/videos/sunset-at-a-lake-464">https://videos.pexels.com/videos/sunset-at-a-lake-464</a></figcaption>
+            </figure>                        
+        </section>
     </main>
-     
 </body>
 </html>
