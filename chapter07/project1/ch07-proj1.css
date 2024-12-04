@@ -7,29 +7,37 @@
     --header-font-size: 32px;
     --header-height: 8em;
 }
+
 body {
-    font-family:   Roboto, Arial, sans-serif;
+    font-family: Roboto, Arial, sans-serif;
     font-size: 1em;
     background-color: var(--color-back-light);
 }
-header {
-   padding: 0 var(--spacer-base);
-   background-color: var(--color-back-dark);
-   height: var(--header-height);
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--spacer-base);
+    background-color: var(--color-back-dark);
+    height: var(--header-height);
 }
+
 header h1 {
     margin: 0;   
     font-size: var(--header-font-size);
     color: white;
 }
+
 header h1 span {
     color: var(--color-primary);
 }
+
 figure {
     margin: 0;
     padding: 0;
 }
+
 button {
     display: inline-block;
     padding: 0.5em 1em;
@@ -39,29 +47,77 @@ button {
     border-radius: 0.25rem;
     cursor: pointer;
 }
+
 .card {
 	background: white;
 	margin-bottom: 2em;	
     padding: 0;
-   
+    width: 24%;
 }
+
 .card-content p {
 	padding: 0.5em 1.4em 0 1.4em;
 	font-size: var(--card-font-size);   
 }
+
 .card-actions {
 	padding: 0.5em 1.4em;
 	font-size: var(--card-font-size);      
 }
 
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
 
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
-/* add your styles here */
+.thumbnail img {
+    max-width: 100%;
+}
 
+.thumbnail:hover {
+    filter: saturate(150%);
+}
 
+.card:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
 
+button {
+    opacity: 0;
+}
 
-/* styles for mobile protrait screen */
+.card:hover button {
+    opacity: 1;
+    transition: opacity 1s ease;
+}
 
+@media only screen and (max-width:480px) {
+    :root {
+        --card-font-size: 100%;
+        --header-font-size: 24px;
+        --header-height: 4em;
+    }
+    
+    .card {
+        width: 100%;
+    }
+}
 
-/* styles for tablet portrait and mobile landscape screens */
+@media only screen and (min-width:481px) and (max-width:768px) {
+    :root {
+        --card-font-size: 100%;
+        --header-height: 5em;
+    }
+    
+    .card {
+        width: 45%;
+    }
+}
