@@ -54,41 +54,23 @@ h2, h3, h4 {
 #b {
     grid-area: b;
     background-image: url('images/b.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    padding: 15px;
 }
 
 #c {
     grid-area: c;
     background-image: url('images/c.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
-#d {
-    grid-area: d;
-    background-color: var(--color-block-3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+#d { grid-area: d; }
 
 #e {
     grid-area: e;
     background-image: url('images/e.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 #f {
     grid-area: f;
     background-image: url('images/f.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 #g { grid-area: g; }
@@ -96,52 +78,30 @@ h2, h3, h4 {
 #h {
     grid-area: h;
     background-image: url('images/h.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    padding: 15px;
 }
 
 #i {
     grid-area: i;
-    font-family: "FontAwesome";
     background-color: var(--color-block-1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #j {
     grid-area: j;
-    font-family: "FontAwesome";
     background-color: var(--color-block-2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #k {
     grid-area: k;
-    background-color: var(--color-block-3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #l {
     grid-area: l;
     background-image: url('images/l.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 #m {
     grid-area: m;
     background-image: url('images/m.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 #n { grid-area: n; }
@@ -149,15 +109,11 @@ h2, h3, h4 {
 #o {
     grid-area: o;
     background-image: url('images/o.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 #p {
     grid-area: p;
     background-image: url('images/p.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 #q {
@@ -168,6 +124,32 @@ h2, h3, h4 {
     display: flex;
     justify-content: flex-end;
     padding: 5px;
+}
+
+#b, #c, #h, #l, #m, #o, #p {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 15px;
+}
+
+#i, #j {
+    font-family: "FontAwesome";
+}
+
+#d, #k {
+    background-color: var(--color-block-3);
+}
+
+#d, #i, #j, #k {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#b, #c, #e, #f, #h, #l, #m, #o, #p {
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 section {
