@@ -120,7 +120,8 @@ h2, h3, h4 {
     grid-area: q;
     background-image: url('images/q.jpg');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 30% 100%;
+    background-position: left center;
     display: flex;
     justify-content: flex-end;
     padding: 5px;
@@ -153,7 +154,7 @@ h2, h3, h4 {
 }
 
 section {
-    max-width: 74%;
+    max-width: 68%;
 }
 
 input {
@@ -187,4 +188,85 @@ p {
 
 h2, p {
     color: var(--color-text-dark);
+}
+
+@media only screen and (max-width: 480px) {
+    .container {
+	    padding: 15px;
+        width: 100%;
+        display: grid;
+        gap: 15px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 175px) 75px 170px 250px 325px repeat(2, 75px) repeat(2, 175px) 250px repeat(2, 275px) 230px;
+        grid-template-areas: "a a"
+                             "b b"
+                             "c c"
+                             "d d"
+                             "e f"
+                             "g g"
+                             "h h"
+                             "i j"
+                             "k k"
+                             "l l"
+                             "m m"
+                             "n n"
+                             "o o"
+                             "p p"
+                             "q q";
+    }
+    
+    body {
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 850px) {
+    .container {
+	    padding: 20px;
+        width: 100%;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 175px) 280px 250px 75px 175px repeat(2, 275px);
+        grid-template-areas: "a a b b"
+                             "c c d d"
+                             "e f g g"
+                             "h h h h"
+                             "i j k k"
+                             "l l m m"
+                             "n n o o"
+                             "p p q q";
+    }
+    
+    body {
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (min-width: 851px) and (max-width: 1100px) {
+    .container {
+    	padding: 20px;
+        width: 100%;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, 175px) 75px 450px repeat(2, 270px) 300px;
+        grid-template-areas: "a a b b c c"
+                             "d d e f g g"
+                             "i j k k g g"
+                             "h h h h h h"
+                             "l l l m m m"
+                             "o o p p n n"
+                             "q q q q q q";
+    }
+    
+    body {
+        font-size: 0.95em;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    div {
+        box-shadow: 1px 1px 1px 1px hsla(0,0%,75%,0.2);
+    }
 }
