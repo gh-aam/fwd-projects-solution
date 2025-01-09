@@ -1,0 +1,119 @@
+@use "base";
+
+@mixin c_header() {
+    .dashboard {
+        display: flex;
+        justify-content: space-between;
+        background-color: base.$color-primary-1-900;
+        color: base.$color-neutral-050;
+        
+        h1 { margin: base.$space-2 base.$space-0 base.$space-0 base.$space-5; }
+        
+        div {
+            display: flex;
+            justify-content: space-between;
+            
+            img { transform: scale(35%); }
+        }
+    }
+}
+
+@mixin c_aside() {
+    .menu {
+        background-color: base.$color-primary-1-800;
+        color: base.$color-neutral-050;
+        text-align: center;
+        
+        div { img { transform: scale(30%); } }
+    }
+}
+
+@mixin c_footer() {
+    footer {
+        background-color: base.$color-primary-1-900;
+        color: base.$color-neutral-050;
+        display: flex;
+        align-items: center;
+        padding-left: base.$space-4;
+        font-weight: base.$font-medium;
+    }
+}
+
+@mixin c_widget() {
+    .widget {
+        background-color: base.$color-neutral-000;
+            
+        h3 {
+            text-align: center;
+            padding: base.$space-4;
+            border-bottom: solid calc(base.$space-4 / 160) gray;
+        }
+            
+        .widget-content {
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+@mixin c_widget_large() {
+    .b8 {
+        grid-area: b8;
+        
+        .widget-content {
+            padding: base.$space-8 + base.$space-2;
+            
+            .matrix {
+                display: grid;
+                grid-gap: base.$space-4;
+                grid-template-rows: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-areas: "c1 c2" "c3 c4";
+                    
+                .c1 { grid-area: c1; }
+                .c2 { grid-area: c2; }
+                .c3 { grid-area: c3; }
+                .c4 { grid-area: c4; }
+                .c1, .c2 { margin-bottom: base.$space-4 + base.$space-1; }
+            }
+        }
+    }
+}
+
+@mixin c_widget_xlarge() {
+    .col-span-4 {
+        grid-area: b1;
+        background-color: base.$color-neutral-000;
+        
+        h3 {
+            text-align: center;
+            padding: base.$space-4;
+            border-bottom: solid calc(base.$space-4 / 160) gray;
+        }
+        
+        .widget-content {
+            padding: base.$space-0 base.$space-24 + base.$space-1 base.$space-0 base.$space-24 + base.$space-1;
+            
+            .portfolio {
+                tr {
+                    padding: base.$space-5;
+                    border-bottom: solid calc(base.$space-4 / 160) gray;
+                    
+                    th, td { padding: base.$space-5; }
+                    
+                    .right {
+                        button {
+                            background-color: base.$color-primary-1-700;
+                            color: base.$color-neutral-000;
+                            border: base.$space-0;
+                            border-radius: calc(base.$space-1 / 4);
+                            padding: base.$space-1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

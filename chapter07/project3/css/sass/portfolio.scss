@@ -1,0 +1,43 @@
+@use "base";
+@use "components";
+
+.container {
+    display: grid;
+    grid-gap: base.$space-4;
+    grid-template-rows: base.$space-16 + base.$space-2 auto;
+    grid-template-columns: base.$space-24 + base.$space-1 auto;
+    grid-template-areas: "a1 a1" "a2 a3";
+    
+    .dashboard { grid-area: a1; }
+    .menu { grid-area: a2; }
+    
+    @include components.c_header();
+    @include components.c_aside();
+    
+    main {
+        grid-area: a3;
+        display: grid;
+        grid-gap: base.$space-4;
+        grid-template-rows: base.$space-43 base.$space-16 + base.$space-2;
+        grid-template-columns: repeat(6, minmax(base.$space-41, base.$space-42));
+        grid-template-areas: "b1 b1 b1 b1 b2 b2" "b3 b3 b3 b3 b3 b3";
+        
+        .col-span-2 {
+            grid-area: b2;
+            display: grid;
+            grid-gap: base.$space-4;
+            grid-template-rows: base.$space-40 * 3 + 0.625rem base.$space-40 * 2 + base.$space-12 + base.$space-3;
+            grid-template-areas: "c1" "c2";
+            
+            .c1 { grid-area: c1; }
+            .c2 { grid-area: c2; }
+            
+            @include components.c_widget();
+        }
+        
+        .b3 { grid-area: b3; }
+        
+        @include components.c_widget_xlarge();
+        @include components.c_footer();
+    }
+}

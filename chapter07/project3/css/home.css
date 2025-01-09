@@ -1,0 +1,189 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, div, span, h1, h2, h3, h4, h5, aside, p, main, nav, ul, li,
+fieldset, form, figure, figcaption, header, footer, nav, section, label, legend {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+}
+
+ul, li {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.65;
+  background-color: #D9E2EC;
+  color: #102A43;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2.441em;
+}
+
+h2 {
+  font-size: 1.563em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+.container {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-rows: 4.5rem auto;
+  grid-template-columns: 6.25rem auto;
+  grid-template-areas: "a1 a1" "a2 a3";
+}
+.container .dashboard {
+  grid-area: a1;
+}
+.container .menu {
+  grid-area: a2;
+}
+.container .dashboard {
+  display: flex;
+  justify-content: space-between;
+  background-color: #003E6B;
+  color: #F0F4F8;
+}
+.container .dashboard h1 {
+  margin: 0.5rem 0 0 1.25rem;
+}
+.container .dashboard div {
+  display: flex;
+  justify-content: space-between;
+}
+.container .dashboard div img {
+  transform: scale(35%);
+}
+.container .menu {
+  background-color: #0A558C;
+  color: #F0F4F8;
+  text-align: center;
+}
+.container .menu div img {
+  transform: scale(30%);
+}
+.container main {
+  grid-area: a3;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-rows: 6.25rem 30.625rem 23.75rem 4.5rem;
+  grid-template-columns: repeat(6, minmax(9.375rem, 15.625rem));
+  grid-template-areas: "b1 b2 b3 b4 b5 b6" "b7 b7 b8 b8 b9 b9" "b10 b10 b11 b11 b11 b11" "b12 b12 b12 b12 b12 b12";
+}
+.container main .b1 {
+  grid-area: b1;
+}
+.container main .b2 {
+  grid-area: b2;
+}
+.container main .b3 {
+  grid-area: b3;
+}
+.container main .b4 {
+  grid-area: b4;
+}
+.container main .b5 {
+  grid-area: b5;
+}
+.container main .b6 {
+  grid-area: b6;
+}
+.container main .b7 {
+  grid-area: b7;
+}
+.container main .b9 {
+  grid-area: b9;
+}
+.container main .b10 {
+  grid-area: b10;
+}
+.container main .b11 {
+  grid-area: b11;
+}
+.container main .b12 {
+  grid-area: b12;
+}
+.container main .highlight {
+  background-color: #62B0E8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container main .widget {
+  background-color: #FFFFFF;
+}
+.container main .widget h3 {
+  text-align: center;
+  padding: 1rem;
+  border-bottom: solid 0.00625rem gray;
+}
+.container main .widget .widget-content img {
+  width: 100%;
+  height: 100%;
+}
+.container main .b8 {
+  grid-area: b8;
+}
+.container main .b8 .widget-content {
+  padding: 2.5rem;
+}
+.container main .b8 .widget-content .matrix {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "c1 c2" "c3 c4";
+}
+.container main .b8 .widget-content .matrix .c1 {
+  grid-area: c1;
+}
+.container main .b8 .widget-content .matrix .c2 {
+  grid-area: c2;
+}
+.container main .b8 .widget-content .matrix .c3 {
+  grid-area: c3;
+}
+.container main .b8 .widget-content .matrix .c4 {
+  grid-area: c4;
+}
+.container main .b8 .widget-content .matrix .c1, .container main .b8 .widget-content .matrix .c2 {
+  margin-bottom: 1.25rem;
+}
+.container main footer {
+  background-color: #003E6B;
+  color: #F0F4F8;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=home.css.map */
