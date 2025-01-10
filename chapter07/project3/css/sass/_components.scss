@@ -22,9 +22,29 @@
     .menu {
         background-color: base.$color-primary-1-800;
         color: base.$color-neutral-050;
-        text-align: center;
         
-        div { img { transform: scale(30%); } }
+        h2 { text-align: center; }
+        
+        .icons {
+            display: grid;
+            grid-template-rows: repeat(6, base.$space-20 + base.$space-2);
+            grid-template-columns: 1fr;
+            
+            div {
+                align-self: center;
+                justify-self: center;
+                line-height: 1;
+                
+                a {
+                    color: base.$color-neutral-000;
+                    text-decoration: none;
+                }
+                
+                .a { transform: scale(90%); }
+                .b { transform: scale(70%); }
+                .c { transform: scale(60%); }
+            }
+        }
     }
 }
 

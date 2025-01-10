@@ -84,10 +84,32 @@ h4 {
 .container .menu {
   background-color: #0A558C;
   color: #F0F4F8;
+}
+.container .menu h2 {
   text-align: center;
 }
-.container .menu div img {
-  transform: scale(30%);
+.container .menu .icons {
+  display: grid;
+  grid-template-rows: repeat(6, 5.5rem);
+  grid-template-columns: 1fr;
+}
+.container .menu .icons div {
+  align-self: center;
+  justify-self: center;
+  line-height: 1;
+}
+.container .menu .icons div a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.container .menu .icons div .a {
+  transform: scale(90%);
+}
+.container .menu .icons div .b {
+  transform: scale(70%);
+}
+.container .menu .icons div .c {
+  transform: scale(60%);
 }
 .container main {
   grid-area: a3;
