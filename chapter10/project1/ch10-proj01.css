@@ -30,24 +30,19 @@ h3 {
 
 .scheme {
   display: grid;
-  grid-template-columns: calc(var(--boxSize) * 5) auto;
+  grid-template-columns: 5fr 1fr;
 }
 
 .preview {
   display: grid;
-  grid-template-columns: var(--boxSize) var(--boxSize) var(--boxSize) var(--boxSize) var(--boxSize);
-  grid-column-gap: 0px;
+  grid-template-columns: repeat(5, 1fr);
 }
 
-.actions {
-  margin-top: calc(var(--boxSize) / 2 - 20px);
-  margin-left: 50px;
-}
+.actions { margin: 5px 0 0 2rem; }
 
 .color-box {
-  width: var(--boxSize);
+  width: 100%;
   height: var(--boxSize);
-  display: inline-grid;
 }
 
 .color-box:nth-child(1) { border-radius: 7px 0 0 7px; }
@@ -56,7 +51,6 @@ h3 {
 .detailBox {
   width: var(--detailBoxSize);
   height: var(--detailBoxSize);
-  display: inline-grid;
   margin-bottom: 15px;
 }
 
@@ -68,11 +62,13 @@ h3 {
 .colorRow span {
   display: inline-block;
   margin: 35px 5px;
+  font-style: italic;
 }
 
 .colorRow label {
   display: inline-block;
   margin: 35px;
+  font-weight: 600;
 }
 
 aside {
@@ -80,20 +76,11 @@ aside {
   margin: 10px 10px 5px 10px;
   background-color: white;
   box-shadow: 6px 5px 20px 1px rgba(0, 0, 0, 0.22);
-
 }
-
-label { font-weight: 600; }
-fieldset span { font-style: italic; }
-hr { margin: 0.75rem 0; }
 
 @media only screen and (max-width: 950px) {
   body { display: block; }
-  
-  aside {
-    padding: 10px;
-    margin: 10px;
-  }
+  aside { margin: 10px; }
 }
 
 button {
@@ -107,8 +94,8 @@ button {
   font-size: 1rem;
   cursor: pointer;
   text-align: center;
-  transition: background 250ms ease-in-out,
-  transform 150ms ease;
+  transition: background 250ms ease-in-out;
+  transform: 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
