@@ -56,7 +56,7 @@ h3 {
 
 .colorRow {
   display: grid;
-  grid-template-columns: 2fr 100px 150px 6fr;
+  grid-template-columns: 2fr 2fr 3fr 6fr;
 }
 
 .colorRow span {
