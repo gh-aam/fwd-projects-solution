@@ -1,3 +1,4 @@
+```JavaScript
 document.addEventListener("DOMContentLoaded", () => {
   const url = 'https://www.randyconnolly.com/funwebdev/3rd/api/shakespeare/play.php';
   
@@ -61,8 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
         
+        // playHere.style.display = 'none';
         playHere.innerHTML = '';
         firstDisplayAfterFetch(data);
+        // playHere.style.display = 'block';
       } else {
         playHere.innerHTML = playHereBackup;
       }
@@ -117,6 +120,31 @@ document.addEventListener("DOMContentLoaded", () => {
     
     speechesFromScene1OfAct1(currentScenes, div1);
     
+    /*
+    currentScenes.speeches.forEach(speech => {
+      const div2 = document.createElement('div');
+      div2.setAttribute('class', 'speech');
+      
+      const span = document.createElement('span');
+      span.textContent = speech.speaker;
+      div2.appendChild(span);
+      
+      speech.lines.forEach(line => {
+        const p3 = document.createElement('p');
+        p3.textContent = line;
+        div2.appendChild(p3);
+      });
+      
+      if (speech.stagedir) {
+        const em = document.createElement('em');
+        em.textContent = speech.stagedir;
+        div2.appendChild(em);
+      }
+      
+      div1.appendChild(div2);
+    });
+    */
+    
     article.appendChild(div1);
     playHere.appendChild(article);
   }
@@ -146,3 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+```
+
+Okay?
