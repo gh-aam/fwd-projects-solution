@@ -1,88 +1,94 @@
-/* In this module, create three classes: Play, Act, and Scene. */
-
-class Scene {
-  constructor(scene) {
-    this.scene = scene;
-  }
-  
-  displaySpeeches(div1) {
-    this.scene.speeches.forEach(speech => {
-      const div2 = document.createElement('div');
-      div2.setAttribute('class', 'speech');
-      
-      const span = document.createElement('span');
-      span.textContent = speech.speaker;
-      div2.appendChild(span);
-      
-      speech.lines.forEach(line => {
-        const p3 = document.createElement('p');
-        p3.textContent = line;
-        div2.appendChild(p3);
-      });
-      
-      if (speech.stagedir) {
-        const em = document.createElement('em');
-        em.textContent = speech.stagedir;
-        div2.appendChild(em);
-      }
-      
-      div1.appendChild(div2);
-    });
-  }
-}
-
-class Act extends Scene {
-  constructor(playData, playHere, act, scene) {
-    super(scene);
-    this.playData = playData;
+class Play {
+  constructor(playData, playHere) {
+    this.title = playData.title;
+    this.acts = playData.acts.map(act => new Act(act));
     this.playHere = playHere;
-    this.act = act;
   }
-  
-  displayScene() {
+
+  displayPlay(actName, sceneName) {
+    this.playHere.innerHTML = '';
+
     const h2 = document.createElement('h2');
-    h2.textContent = this.playData.title;
+    h2.textContent = this.title;
     this.playHere.appendChild(h2);
-    
+
     const article = document.createElement('article');
     article.setAttribute('id', 'actHere');
     
-    const h3 = document.createElement('h3');
-    h3.textContent = this.act.name;
-    article.appendChild(h3);
-    
-    const div1 = document.createElement('div');
-    div1.setAttribute('id', 'sceneHere');
-    
-    const h4 = document.createElement('h4');
-    h4.textContent = this.scene.name;
-    div1.appendChild(h4);
-    
-    const p1 = document.createElement('p');
-    p1.setAttribute('class', 'title');
-    p1.textContent = this.scene.title;
-    div1.appendChild(p1);
-    
-    const p2 = document.createElement('p');
-    p2.setAttribute('class', 'direction');
-    p2.textContent = this.scene.stageDirection;
-    div1.appendChild(p2);
-    
-    super.displaySpeeches(div1);
-    
-    article.appendChild(div1);
+    const selectedAct = this.acts.find(act => act.name === actName);
+    selectedAct.displayAct(article, sceneName);
+
     this.playHere.appendChild(article);
   }
 }
 
-class Play extends Act {
-  constructor(playData, playHere, act, scene) {
-    super(playData, playHere, act, scene);
+class Act {
+  constructor(actData) {
+    this.name = actData.name;
+    this.scenes = actData.scenes.map(scene => new Scene(scene));
   }
-  
-  displayPlay() {
-    super.displayScene();
+
+  displayAct(container, sceneName) {
+    const h3 = document.createElement('h3');
+    h3.textContent = this.name;
+    container.appendChild(h3);
+
+    const div = document.createElement('div');
+    div.setAttribute('id', 'sceneHere');
+
+    const selectedScene = this.scenes.find(scene => scene.name === sceneName);
+    selectedScene.displayScene(div);
+
+    container.appendChild(div);
   }
 }
 
-export { Play, Act, Scene };
+class Scene {
+  constructor(sceneData) {
+    this.name = sceneData.name;
+    this.title = sceneData.title;
+    this.stageDirection = sceneData.stageDirection;
+    this.speeches = sceneData.speeches;
+  }
+
+  displayScene(container) {
+    const h4 = document.createElement('h4');
+    h4.textContent = this.name;
+    container.appendChild(h4);
+
+    const p1 = document.createElement('p');
+    p1.className = 'title';
+    p1.textContent = this.title;
+    container.appendChild(p1);
+
+    const p2 = document.createElement('p');
+    p2.className = 'direction';
+    p2.textContent = this.stageDirection;
+    container.appendChild(p2);
+
+    this.speeches.forEach(speech => {
+      const speechDiv = document.createElement('div');
+      speechDiv.className = 'speech';
+
+      const span = document.createElement('span');
+      span.textContent = speech.speaker;
+      speechDiv.appendChild(span);
+
+      speech.lines.forEach(line => {
+        const p = document.createElement('p');
+        p.textContent = line;
+        speechDiv.appendChild(p);
+      });
+
+      if (speech.stagedir) {
+        const em = document.createElement('em');
+        em.textContent = speech.stagedir;
+        speechDiv.appendChild(em);
+      }
+
+      container.appendChild(speechDiv);
+    });
+  }
+}
+
+export default Play;

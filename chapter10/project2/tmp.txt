@@ -12,7 +12,7 @@
 
 <body>
   <header>
-    <h1>Project 2 - Shakespeare Play Viewer</h1>
+    <h1>Shakespeare Play Viewer</h1>
   </header>
   
   <main>
@@ -36,16 +36,13 @@
     </aside>
     
     <section id="playHere">
-      <!-- Note you will need to remove or comment out some of this markup; 
-        it is there to show you the markup that your javascript will need to generate.
-      -->
-      <h2>Play title here</h2>
+      <h2>Play Title Here</h2>
       <article id="actHere">
-        <h3>Act name here</h3>
+        <h3>Act Name Here</h3>
         <div id="sceneHere">
-          <h4>Scene name here</h4>
-          <p class="title">scene title</p>
-          <p class="direction">stage direction</p>
+          <h4>Scene Name Here</h4>
+          <p class="title">Scene Title</p>
+          <p class="direction">Stage Direction</p>
           <div class="speech"><span>BERNARDO</span><p>Who's there?</p></div>
           <div class="speech"><span>FRANCISCO</span><p>Nay, answer me: <b>stand</b>, and unfold yourself.</p></div>
           <div class="speech"><span>MARCELLUS</span><p>'Tis gone!</p><p>We do it wrong, being so majestical,</p><p>To offer it the show of violence;</p><p>For it is, as the air, invulnerable,</p><p>And our vain blows malicious mockery.</p><em>Exit Ghost</em></div>
@@ -58,33 +55,17 @@
 ```
 
 ```ch10-proj02.js
-import { Play, Act, Scene } from './play-module.js';
+import Play from './play-module.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const url = 'https://www.randyconnolly.com/funwebdev/3rd/api/shakespeare/play.php';
-  
-  /*
-    To get a specific play, add play name via query string,
-    e.g., url = url + '?name=hamlet';
-    https://www.randyconnolly.com/funwebdev/3rd/api/shakespeare/play.php?name=hamlet
-    https://www.randyconnolly.com/funwebdev/3rd/api/shakespeare/play.php?name=jcaesar
-  */
-  
-  /* note: you may get a CORS error if you test this locally (i.e., directly from a
-    local file). To work correctly, this needs to be tested on a local web server.
-    Some possibilities: if using Visual Code, use Live Server extension; if Brackets,
-    use built-in Live Preview.
-  */
   
   const playList = document.querySelector('#playList');
   const actList = document.querySelector('#actList');
   const sceneList = document.querySelector('#sceneList');
   const playHere = document.querySelector('#playHere');
-  const actHere = document.querySelector('#actHere');
-  const sceneHere = document.querySelector('#sceneHere');
   
   let playData = {};
-  let currentActs = [];
   const playHereBackup = playHere.innerHTML;
   
   playList.addEventListener('change', async (e) => {
@@ -92,41 +73,27 @@ document.addEventListener("DOMContentLoaded", () => {
     
     try {
       const response = await fetch(newUrl);
-      
-      if (!response.ok) {
-        throw new Error('Network response was not ok.');
-      }
-      
       const data = await response.json();
       
       actList.innerHTML = '';
       sceneList.innerHTML = '';
       playData = data;
-      currentActs = data.acts;
       
-      if (Array.isArray(currentActs)) {
+      if (Array.isArray(data.acts)) {
         let firstAct = true;
         
-        currentActs.forEach(act => {
-          const option = document.createElement('option');
-          option.textContent = act.name;
-          option.setAttribute('value', act.name);
-          actList.appendChild(option);
+        data.acts.forEach(act => {
+          populateSelectList(act.name, actList);
           
           if (firstAct) {
             let firstScene = true;
             
             act.scenes.forEach(scene => {
-              const option = document.createElement('option');
-              option.textContent = scene.name;
-              option.setAttribute('value', scene.name);
-              sceneList.appendChild(option);
+              populateSelectList(scene.name, sceneList);
               
               if (firstScene) {
-                playHere.innerHTML = '';
-                // displayScene(act, scene);
-                const display = new Play(playData, playHere, act, scene);
-                display.displayPlay();
+                const display = new Play(playData, playHere);
+                display.displayPlay(act.name, scene.name);
                 firstScene = false;
               }
             });
@@ -143,191 +110,133 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   actList.addEventListener('change', (e) => {
-    const selectedAct = currentActs.find(act => act.name === e.target.value);
+    const selectedAct = playData.acts.find(act => act.name === e.target.value);
+    let firstScene = true;
     
     sceneList.innerHTML = '';
     
-    let firstScene = true;
-    
     selectedAct.scenes.forEach(scene => {
-      const option = document.createElement('option');
-      option.textContent = scene.name;
-      option.setAttribute('value', scene.name);
-      sceneList.appendChild(option);
+      populateSelectList(scene.name, sceneList);
       
       if (firstScene) {
-        playHere.innerHTML = '';
-        // displayScene(selectedAct, scene);
-        const display = new Play(playData, playHere, selectedAct, scene);
-        display.displayPlay();
+        const display = new Play(playData, playHere);
+        display.displayPlay(selectedAct.name, scene.name);
         firstScene = false;
       }
     });
   });
   
   sceneList.addEventListener('change', (e) => {
-    const selectedAct = currentActs.find(act => act.name === actList.value);
+    const selectedAct = playData.acts.find(act => act.name === actList.value);
     const selectedScene = selectedAct.scenes.find(scene => scene.name === e.target.value);
-    
-    playHere.innerHTML = '';
-    // displayScene(selectedAct, selectedScene);
-    const display = new Play(playData, playHere, selectedAct, selectedScene);
-    display.displayPlay();
+    const display = new Play(playData, playHere);
+    display.displayPlay(selectedAct.name, selectedScene.name);
   });
   
-  /*
-  function displayScene(act, scene) {
-    const h2 = document.createElement('h2');
-    h2.textContent = playData.title;
-    playHere.appendChild(h2);
-    
-    const article = document.createElement('article');
-    article.setAttribute('id', 'actHere');
-    
-    const h3 = document.createElement('h3');
-    h3.textContent = act.name;
-    article.appendChild(h3);
-    
-    const div1 = document.createElement('div');
-    div1.setAttribute('id', 'sceneHere');
-    
-    const h4 = document.createElement('h4');
-    h4.textContent = scene.name;
-    div1.appendChild(h4);
-    
-    const p1 = document.createElement('p');
-    p1.setAttribute('class', 'title');
-    p1.textContent = scene.title;
-    div1.appendChild(p1);
-    
-    const p2 = document.createElement('p');
-    p2.setAttribute('class', 'direction');
-    p2.textContent = scene.stageDirection;
-    div1.appendChild(p2);
-    
-    displaySpeeches(scene, div1);
-    
-    article.appendChild(div1);
-    playHere.appendChild(article);
+  function populateSelectList(content, selectList) {
+    const option = document.createElement('option');
+    option.textContent = content;
+    option.value = content;
+    selectList.appendChild(option);
   }
-  
-  function displaySpeeches(scene, div1) {
-    scene.speeches.forEach(speech => {
-      const div2 = document.createElement('div');
-      div2.setAttribute('class', 'speech');
-      
-      const span = document.createElement('span');
-      span.textContent = speech.speaker;
-      div2.appendChild(span);
-      
-      speech.lines.forEach(line => {
-        const p3 = document.createElement('p');
-        p3.textContent = line;
-        div2.appendChild(p3);
-      });
-      
-      if (speech.stagedir) {
-        const em = document.createElement('em');
-        em.textContent = speech.stagedir;
-        div2.appendChild(em);
-      }
-      
-      div1.appendChild(div2);
-    });
-  }
-  */
 });
 ```
 
 ```play-module.js
-/* In this module, create three classes: Play, Act, and Scene. */
-
-class Play extends Act {
-  constructor(playData, playHere, act, scene) {
-    super(playData, playHere, act, scene);
-  }
-  
-  displayPlay() {
-    super.displayScene();
-  }
-}
-
-class Act extends Scene {
-  constructor(playData, playHere, act, scene) {
-    super(scene);
-    this.playData = playData;
+class Play {
+  constructor(playData, playHere) {
+    this.title = playData.title;
+    this.acts = playData.acts.map(act => new Act(act));
     this.playHere = playHere;
-    this.act = act;
   }
-  
-  displayScene() {
+
+  displayPlay(actName, sceneName) {
+    this.playHere.innerHTML = '';
+
     const h2 = document.createElement('h2');
-    h2.textContent = this.playData.title;
+    h2.textContent = this.title;
     this.playHere.appendChild(h2);
-    
+
     const article = document.createElement('article');
     article.setAttribute('id', 'actHere');
     
-    const h3 = document.createElement('h3');
-    h3.textContent = this.act.name;
-    article.appendChild(h3);
-    
-    const div1 = document.createElement('div');
-    div1.setAttribute('id', 'sceneHere');
-    
-    const h4 = document.createElement('h4');
-    h4.textContent = this.scene.name;
-    div1.appendChild(h4);
-    
-    const p1 = document.createElement('p');
-    p1.setAttribute('class', 'title');
-    p1.textContent = this.scene.title;
-    div1.appendChild(p1);
-    
-    const p2 = document.createElement('p');
-    p2.setAttribute('class', 'direction');
-    p2.textContent = this.scene.stageDirection;
-    div1.appendChild(p2);
-    
-    super.displaySpeeches(div1);
-    
-    article.appendChild(div1);
+    const selectedAct = this.acts.find(act => act.name === actName);
+    selectedAct.displayAct(article, sceneName);
+
     this.playHere.appendChild(article);
   }
 }
 
-class Scene {
-  constructor(scene) {
-    this.scene = scene;
+class Act {
+  constructor(actData) {
+    this.name = actData.name;
+    this.scenes = actData.scenes.map(scene => new Scene(scene));
   }
-  
-  displaySpeeches(div1) {
-    this.scene.speeches.forEach(speech => {
-      const div2 = document.createElement('div');
-      div2.setAttribute('class', 'speech');
-      
+
+  displayAct(container, sceneName) {
+    const h3 = document.createElement('h3');
+    h3.textContent = this.name;
+    container.appendChild(h3);
+
+    const div = document.createElement('div');
+    div.setAttribute('id', 'sceneHere');
+
+    const selectedScene = this.scenes.find(scene => scene.name === sceneName);
+    selectedScene.displayScene(div);
+
+    container.appendChild(div);
+  }
+}
+
+class Scene {
+  constructor(sceneData) {
+    this.name = sceneData.name;
+    this.title = sceneData.title;
+    this.stageDirection = sceneData.stageDirection;
+    this.speeches = sceneData.speeches;
+  }
+
+  displayScene(container) {
+    const h4 = document.createElement('h4');
+    h4.textContent = this.name;
+    container.appendChild(h4);
+
+    const p1 = document.createElement('p');
+    p1.className = 'title';
+    p1.textContent = this.title;
+    container.appendChild(p1);
+
+    const p2 = document.createElement('p');
+    p2.className = 'direction';
+    p2.textContent = this.stageDirection;
+    container.appendChild(p2);
+
+    this.speeches.forEach(speech => {
+      const speechDiv = document.createElement('div');
+      speechDiv.className = 'speech';
+
       const span = document.createElement('span');
       span.textContent = speech.speaker;
-      div2.appendChild(span);
-      
+      speechDiv.appendChild(span);
+
       speech.lines.forEach(line => {
-        const p3 = document.createElement('p');
-        p3.textContent = line;
-        div2.appendChild(p3);
+        const p = document.createElement('p');
+        p.textContent = line;
+        speechDiv.appendChild(p);
       });
-      
+
       if (speech.stagedir) {
         const em = document.createElement('em');
         em.textContent = speech.stagedir;
-        div2.appendChild(em);
+        speechDiv.appendChild(em);
       }
-      
-      div1.appendChild(div2);
+
+      container.appendChild(speechDiv);
     });
   }
 }
 
-export { Play, Act, Scene };
+export default Play;
 ```
 
-Console says, "Cannot access 'Act' before initialization".
+Okay?
