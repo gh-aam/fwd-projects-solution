@@ -1,3 +1,5 @@
+import { Play, Act, Scene } from './play-module.js';
+
 document.addEventListener("DOMContentLoaded", () => {
   const url = 'https://www.randyconnolly.com/funwebdev/3rd/api/shakespeare/play.php';
   
@@ -21,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const actHere = document.querySelector('#actHere');
   const sceneHere = document.querySelector('#sceneHere');
   
+  let playData = {};
   let currentActs = [];
   const playHereBackup = playHere.innerHTML;
   
@@ -38,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       actList.innerHTML = '';
       sceneList.innerHTML = '';
+      playData = data;
       currentActs = data.acts;
       
       if (Array.isArray(currentActs)) {
@@ -50,20 +54,29 @@ document.addEventListener("DOMContentLoaded", () => {
           actList.appendChild(option);
           
           if (firstAct) {
+            let firstScene = true;
+            
             act.scenes.forEach(scene => {
               const option = document.createElement('option');
               option.textContent = scene.name;
               option.setAttribute('value', scene.name);
               sceneList.appendChild(option);
+              
+              if (firstScene) {
+                playHere.innerHTML = '';
+                displayScene(act, scene);
+                firstScene = false;
+              }
             });
             
             firstAct = false;
           }
         });
         
-        playHere.innerHTML = '';
-        firstDisplayAfterFetch(data);
+        // playHere.innerHTML = '';
+        // firstDisplayAfterFetch(data);
       } else {
+        // playHere.innerHTML = '';
         playHere.innerHTML = playHereBackup;
       }
     } catch (error) {
@@ -72,18 +85,35 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   actList.addEventListener('change', (e) => {
-    const selectedActs = currentActs.find(act => act.name === e.target.value);
+    const selectedAct = currentActs.find(act => act.name === e.target.value);
     
     sceneList.innerHTML = '';
     
-    selectedActs.scenes.forEach(scene => {
+    let firstScene = true;
+    
+    selectedAct.scenes.forEach(scene => {
       const option = document.createElement('option');
       option.textContent = scene.name;
       option.setAttribute('value', scene.name);
       sceneList.appendChild(option);
+      
+      if (firstScene) {
+        playHere.innerHTML = '';
+        displayScene(selectedAct, scene);
+        firstScene = false;
+      }
     });
   });
   
+  sceneList.addEventListener('change', (e) => {
+    const selectedAct = currentActs.find(act => act.name === actList.value);
+    const selectedScene = selectedAct.scenes.find(scene => scene.name === e.target.value);
+    
+    playHere.innerHTML = '';
+    displayScene(selectedAct, selectedScene);
+  });
+  
+  /*
   function firstDisplayAfterFetch(playData) {
     const h2 = document.createElement('h2');
     h2.textContent = playData.title;
@@ -120,9 +150,72 @@ document.addEventListener("DOMContentLoaded", () => {
     article.appendChild(div1);
     playHere.appendChild(article);
   }
+  */
   
+  /*
   function speechesFromScene1OfAct1(currentScenes, div1) {
     currentScenes.speeches.forEach(speech => {
+      const div2 = document.createElement('div');
+      div2.setAttribute('class', 'speech');
+      
+      const span = document.createElement('span');
+      span.textContent = speech.speaker;
+      div2.appendChild(span);
+      
+      speech.lines.forEach(line => {
+        const p3 = document.createElement('p');
+        p3.textContent = line;
+        div2.appendChild(p3);
+      });
+      
+      if (speech.stagedir) {
+        const em = document.createElement('em');
+        em.textContent = speech.stagedir;
+        div2.appendChild(em);
+      }
+      
+      div1.appendChild(div2);
+    });
+  }
+  */
+  
+  function displayScene(act, scene) {
+    const h2 = document.createElement('h2');
+    h2.textContent = playData.title;
+    playHere.appendChild(h2);
+    
+    const article = document.createElement('article');
+    article.setAttribute('id', 'actHere');
+    
+    const h3 = document.createElement('h3');
+    h3.textContent = act.name;
+    article.appendChild(h3);
+    
+    const div1 = document.createElement('div');
+    div1.setAttribute('id', 'sceneHere');
+    
+    const h4 = document.createElement('h4');
+    h4.textContent = scene.name;
+    div1.appendChild(h4);
+    
+    const p1 = document.createElement('p');
+    p1.setAttribute('class', 'title');
+    p1.textContent = scene.title;
+    div1.appendChild(p1);
+    
+    const p2 = document.createElement('p');
+    p2.setAttribute('class', 'direction');
+    p2.textContent = scene.stageDirection;
+    div1.appendChild(p2);
+    
+    displaySpeeches(scene, div1);
+    
+    article.appendChild(div1);
+    playHere.appendChild(article);
+  }
+  
+  function displaySpeeches(scene, div1) {
+    scene.speeches.forEach(speech => {
       const div2 = document.createElement('div');
       div2.setAttribute('class', 'speech');
       
