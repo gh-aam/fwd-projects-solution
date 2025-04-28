@@ -1,3 +1,4 @@
+/* Color theme variables */
 :root {
   --main-bg-color: white;
   --header-bg-color: hsl(221, 49%, 33%);
@@ -8,6 +9,7 @@
   --aside-heading-color: hsl(210, 50%, 50%);
 }
 
+/* General body styles */
 body {
   background-color: var(--main-bg-color);
   color: var(--text-color);
@@ -19,6 +21,7 @@ body {
   font-size: 1.2rem;
 }
 
+/* Header styles */
 header {
   background-color: var(--header-bg-color);
   color: var(--header-text-color);
@@ -27,6 +30,7 @@ header {
   text-align: center;
 }
 
+/* Heading margins */
 h1, h2, h3, h4 { margin: 0; padding: 0; }
 h2 { margin-top: 5px; }
 
@@ -35,24 +39,28 @@ h4 {
   margin: 15px 0 5px 0;
 }
 
+/* Form control styles */
 select, input {
   height: 30px;
   display: block;
   margin-top: 10px;
 }
 
+/* Layout using CSS Grid */
 main {
   display: grid;
   grid-template-columns: 3fr 9fr;
   grid-gap: 5px;
 }
 
+/* Sidebar (aside) styles */
 aside {
   background-color: var(--aside-bg-color);
   color: var(--aside-heading-color);
   padding: 5px;
 }
 
+/* Main content section */
 section {
   padding: 20px;
   font-family: 'Cormorant Garamond', serif;
@@ -61,6 +69,7 @@ section {
   height: 700px
 }
 
+/* Scene elements */
 p.title { font-weight: 600; margin: 0; }
 
 p.direction {
@@ -69,21 +78,26 @@ p.direction {
   font-weight: 500;
 }
 
+/* Speaker name styling */
 .speech span {
   display: block;
   margin-top: 12px;
   font-weight: 700;
 }
 
+/* Speech paragraph styles */
 .speech p { margin: 0; }
+/* Highlighted text */
 .speech p b { background-color: yellow; }
 
+/* Stage direction italicized */
 .speech em {
   font-style: italic;
   display: block;
   margin-top: 12px;
 }
 
+/* Button styling */
 button {
   margin-top: 10px;
   background-color: var(--aside-heading-color);
@@ -96,6 +110,7 @@ button {
   text-align: center;
 }
 
+/* Fieldset border */
 fieldset {
   margin-top: 5px;
   border: 1px solid var(--header-text-color);
