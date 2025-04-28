@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const actList = document.querySelector('#actList');
   const sceneList = document.querySelector('#sceneList');
   const playHere = document.querySelector('#playHere');
+  const playerList = document.querySelector('#playerList');
+  const filterButton = document.querySelector('#btnHighlight');
+  const sceneHere = document.querySelector('#sceneHere');
   
   let playData = {};
   const playHereBackup = playHere.innerHTML;
@@ -20,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       actList.innerHTML = '';
       sceneList.innerHTML = '';
+      playerList.innerHTML = '';
       playData = data;
       
       if (Array.isArray(data.acts)) {
@@ -43,6 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
             
             firstAct = false;
           }
+        });
+        
+        populateSelectList('All Players', playerList);
+        data.persona.forEach(p => {
+          populateSelectList(p.player, playerList);
         });
       } else {
         playHere.innerHTML = playHereBackup;
@@ -74,6 +83,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedScene = selectedAct.scenes.find(scene => scene.name === e.target.value);
     const display = new Play(playData, playHere);
     display.displayPlay(selectedAct.name, selectedScene.name);
+  });
+  
+  filterButton.addEventListener('click', () => {
+    const speeches = document.querySelectorAll('#sceneHere .speech');
+    
+    speeches.forEach(speech => {
+      const speaker = speech.querySelector('span').textContent;
+      speech.hidden = !(playerList.value === 'All Players' || speaker === playerList.value);
+    });
   });
   
   function populateSelectList(content, selectList) {
