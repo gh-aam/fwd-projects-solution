@@ -24,6 +24,7 @@ header {
   color: var(--header-text-color);
   margin: 0;
   padding: 15px;
+  text-align: center;
 }
 
 h1, h2, h3, h4 { margin: 0; padding: 0; }

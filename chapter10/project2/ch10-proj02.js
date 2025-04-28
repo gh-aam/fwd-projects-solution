@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const playHere = document.querySelector('#playHere');
   const playerList = document.querySelector('#playerList');
   const filterButton = document.querySelector('#btnHighlight');
-  const sceneHere = document.querySelector('#sceneHere');
+  const inputBox = document.querySelector('#txtHighlight');
   
   let playData = {};
   const playHereBackup = playHere.innerHTML;
@@ -87,10 +87,25 @@ document.addEventListener("DOMContentLoaded", () => {
   
   filterButton.addEventListener('click', () => {
     const speeches = document.querySelectorAll('#sceneHere .speech');
+    const searchKeyword = inputBox.value;
+    const regex = new RegExp(searchKeyword, 'gi');
     
     speeches.forEach(speech => {
       const speaker = speech.querySelector('span').textContent;
-      speech.hidden = !(playerList.value === 'All Players' || speaker === playerList.value);
+      
+      speech.querySelectorAll('p').forEach(p => {
+        p.innerHTML = p.textContent;
+      });
+      
+      if (playerList.value === 'All Players' || speaker === playerList.value || !Array.isArray(playData.persona)) {
+        speech.style.display = 'block';
+        
+        speech.querySelectorAll('p').forEach(p => {
+          p.innerHTML = p.textContent.replace(regex, match => `<b>${match}</b>`);
+        });
+      } else {
+        speech.style.display = 'none';
+      }
     });
   });
   
